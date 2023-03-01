@@ -59,7 +59,7 @@ public class UserRegistrationValidCheck {
         Matcher matcher=pattern.matcher(userDetails.getPassword());
         boolean matchPassword=matcher.matches();
         if(!matchPassword) {
-            System.out.println("Please enter correct minimum 8 character password");
+            System.out.println("Please enter correct minimum 8 character password and 1 uppercase");
             user.getPassword();
         }
     }
