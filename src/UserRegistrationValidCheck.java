@@ -55,11 +55,11 @@ public class UserRegistrationValidCheck {
         Scanner scanner=new Scanner(System.in);
         System.out.println("Enter the Password");
         userDetails.setPassword(scanner.nextLine());
-        Pattern pattern=Pattern.compile("((?=.*[a-z])(?=.*[A-Z])).{8,}");
+        Pattern pattern=Pattern.compile("((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])).{8,}");
         Matcher matcher=pattern.matcher(userDetails.getPassword());
         boolean matchPassword=matcher.matches();
         if(!matchPassword) {
-            System.out.println("Please enter correct minimum 8 character password and 1 uppercase");
+            System.out.println("Please enter correct minimum 8 characters, 1 uppercase and 1 numeric");
             user.getPassword();
         }
     }
