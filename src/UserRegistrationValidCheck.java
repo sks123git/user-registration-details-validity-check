@@ -55,7 +55,7 @@ public class UserRegistrationValidCheck {
         Scanner scanner=new Scanner(System.in);
         System.out.println("Enter the Password");
         userDetails.setPassword(scanner.nextLine());
-        Pattern pattern=Pattern.compile("([a-zA-Z0-9]{8,})");
+        Pattern pattern=Pattern.compile("((?=.*[a-z])(?=.*[A-Z])).{8,}");
         Matcher matcher=pattern.matcher(userDetails.getPassword());
         boolean matchPassword=matcher.matches();
         if(!matchPassword) {
