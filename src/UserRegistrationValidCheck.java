@@ -25,13 +25,13 @@ public class UserRegistrationValidCheck {
         UserRegistrationValidCheck user=new UserRegistrationValidCheck();
         UserDetails userDetails=new UserDetails();
         Scanner scanner=new Scanner(System.in);
-        System.out.println("Enter the Password");
+        System.out.println("Enter the email id");
         userDetails.setEmailAddress(scanner.nextLine());
         Pattern pattern=Pattern.compile("([a-zA-Z0-9\\.]+@[a-z]+\\.[a-z]{2,3}+([\\.][a-z]{2})?)");
         Matcher matcher=pattern.matcher(userDetails.getEmailAddress());
-        boolean matchPassword=matcher.matches();
-        if(!matchPassword) {
-            System.out.println("Please enter correct password");
+        boolean matchEmail=matcher.matches();
+        if(!matchEmail) {
+            System.out.println("Please enter correct email id");
             user.getEmailAddress();
         }
     }
@@ -39,21 +39,36 @@ public class UserRegistrationValidCheck {
         UserRegistrationValidCheck user=new UserRegistrationValidCheck();
         UserDetails userDetails=new UserDetails();
         Scanner scanner=new Scanner(System.in);
-        System.out.println("Enter the Password");
+        System.out.println("Enter the mobile number");
         userDetails.setMobileNo(scanner.nextLine());
         Pattern pattern=Pattern.compile("([0-9]{2}+\\s[0-9]{10})");
         Matcher matcher=pattern.matcher(userDetails.getMobileNo());
-        boolean matchPassword=matcher.matches();
-        if(!matchPassword) {
+        boolean matchMobileNumber=matcher.matches();
+        if(!matchMobileNumber) {
             System.out.println("Please enter correct mobile no");
             user.getMobileNumber();
+        }
+    }
+    public void getPassword(){
+        UserRegistrationValidCheck user=new UserRegistrationValidCheck();
+        UserDetails userDetails=new UserDetails();
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("Enter the Password");
+        userDetails.setPassword(scanner.nextLine());
+        Pattern pattern=Pattern.compile("([a-zA-Z0-9]{8,})");
+        Matcher matcher=pattern.matcher(userDetails.getPassword());
+        boolean matchPassword=matcher.matches();
+        if(!matchPassword) {
+            System.out.println("Please enter correct minimum 8 character password");
+            user.getPassword();
         }
     }
 
     public static void main(String[] args) {
         UserRegistrationValidCheck user = new UserRegistrationValidCheck();
-        user.getFirstNameLastName();
-        user.getEmailAddress();
-        user.getMobileNumber();
+//        user.getFirstNameLastName();
+//        user.getEmailAddress();
+//        user.getMobileNumber();
+        user.getPassword();
     }
 }
