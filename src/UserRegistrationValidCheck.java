@@ -21,18 +21,18 @@ public class UserRegistrationValidCheck {
             user.getFirstNameLastName();
         }
     }
-    public void getPassword(){
+    public void getEmailAddress(){
         UserRegistrationValidCheck user=new UserRegistrationValidCheck();
         UserDetails userDetails=new UserDetails();
         Scanner scanner=new Scanner(System.in);
         System.out.println("Enter the Password");
-        userDetails.setPassword(scanner.nextLine());
+        userDetails.setEmailAddress(scanner.nextLine());
         Pattern pattern=Pattern.compile("([a-zA-Z0-9\\.]+@[a-z]+\\.[a-z]{2,3}+([\\.][a-z]{2})?)");
-        Matcher matcher=pattern.matcher(userDetails.getPassword());
+        Matcher matcher=pattern.matcher(userDetails.getEmailAddress());
         boolean matchPassword=matcher.matches();
         if(!matchPassword) {
             System.out.println("Please enter correct password");
-            user.getPassword();
+            user.getEmailAddress();
         }
     }
     public void getMobileNumber(){
@@ -52,8 +52,8 @@ public class UserRegistrationValidCheck {
 
     public static void main(String[] args) {
         UserRegistrationValidCheck user = new UserRegistrationValidCheck();
-//        user.getFirstNameLastName();
-//        user.getPassword();
+        user.getFirstNameLastName();
+        user.getEmailAddress();
         user.getMobileNumber();
     }
 }
