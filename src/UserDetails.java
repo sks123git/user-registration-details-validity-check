@@ -2,7 +2,18 @@ public class UserDetails {
     private String firstName;
     private String  lastName;
     private String  password;
-    public UserDetails(String firstName,String lastName){
+
+    private String mobileNo;
+
+    public String getMobileNo() {
+        return mobileNo;
+    }
+
+    public void setMobileNo(String mobileNo) {
+        this.mobileNo = mobileNo;
+    }
+
+    public UserDetails(String firstName, String lastName){
         this.firstName=firstName;
         this.lastName=lastName;
     }

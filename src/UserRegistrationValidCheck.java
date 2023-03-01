@@ -35,10 +35,25 @@ public class UserRegistrationValidCheck {
             user.getPassword();
         }
     }
+    public void getMobileNumber(){
+        UserRegistrationValidCheck user=new UserRegistrationValidCheck();
+        UserDetails userDetails=new UserDetails();
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("Enter the Password");
+        userDetails.setMobileNo(scanner.nextLine());
+        Pattern pattern=Pattern.compile("([0-9]{2}+\\s[0-9]{10})");
+        Matcher matcher=pattern.matcher(userDetails.getMobileNo());
+        boolean matchPassword=matcher.matches();
+        if(!matchPassword) {
+            System.out.println("Please enter correct mobile no");
+            user.getMobileNumber();
+        }
+    }
 
     public static void main(String[] args) {
-        UserRegistrationValidCheck user=new UserRegistrationValidCheck();
-        user.getFirstNameLastName();
-        user.getPassword();
+        UserRegistrationValidCheck user = new UserRegistrationValidCheck();
+//        user.getFirstNameLastName();
+//        user.getPassword();
+        user.getMobileNumber();
     }
 }
