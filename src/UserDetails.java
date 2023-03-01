@@ -1,9 +1,38 @@
 public class UserDetails {
-    String firstName;
-
-    public UserDetails(String firstName){
+    private String firstName;
+    private String  lastName;
+    private String  password;
+    public UserDetails(String firstName,String lastName){
         this.firstName=firstName;
+        this.lastName=lastName;
+    }
+    public UserDetails(String password){
+        this.password=password;
     }
     public UserDetails(){}
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
 

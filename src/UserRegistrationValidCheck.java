@@ -3,35 +3,42 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistrationValidCheck {
-    public void getFirstName(){
+    public void getFirstNameLastName(){
         UserRegistrationValidCheck user=new UserRegistrationValidCheck();
+        UserDetails userDetails=new UserDetails();
         Scanner scanner=new Scanner(System.in);
         System.out.println("Enter the first name");
-        UserDetails userDetails=new UserDetails(scanner.nextLine());
-        Pattern pattern=Pattern.compile("([A-Z][a-z]{2,})");
-        Matcher matcher=pattern.matcher(userDetails.firstName);
-        boolean m=matcher.matches();
-        if(!m) {
-            System.out.println("Please enter 1st letter in caps and min 3 letters");
-            user.getFirstName();
-        }
-    }
-    public void getLastName(){
-        UserRegistrationValidCheck user=new UserRegistrationValidCheck();
-        Scanner scanner=new Scanner(System.in);
+        userDetails.setFirstName(scanner.nextLine());
         System.out.println("Enter the Last name");
-        UserDetails userDetails=new UserDetails(scanner.nextLine());
+        userDetails.setLastName(scanner.nextLine());
         Pattern pattern=Pattern.compile("([A-Z][a-z]{2,})");
-        Matcher matcher=pattern.matcher(userDetails.firstName);
-        boolean m=matcher.matches();
-        if(!m) {
+        Matcher matcherFirstName=pattern.matcher(userDetails.getFirstName());
+        boolean matchFirstName=matcherFirstName.matches();
+        Matcher matcherLastName=pattern.matcher(userDetails.getLastName());
+        boolean matchLastName=matcherLastName.matches();
+        if(!matchFirstName || !matchLastName) {
             System.out.println("Please enter 1st letter in caps and min 3 letters");
-            user.getLastName();
+            user.getFirstNameLastName();
         }
     }
+    public void getPassword(){
+        UserRegistrationValidCheck user=new UserRegistrationValidCheck();
+        UserDetails userDetails=new UserDetails();
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("Enter the Password");
+        userDetails.setPassword(scanner.nextLine());
+        Pattern pattern=Pattern.compile("([a-zA-Z0-9\\.]+@[a-z]+\\.[a-z]{2,3}+([\\.][a-z]{2})?)");
+        Matcher matcher=pattern.matcher(userDetails.getPassword());
+        boolean matchPassword=matcher.matches();
+        if(!matchPassword) {
+            System.out.println("Please enter correct password");
+            user.getPassword();
+        }
+    }
+
     public static void main(String[] args) {
         UserRegistrationValidCheck user=new UserRegistrationValidCheck();
-        user.getFirstName();
-        user.getLastName();
+        user.getFirstNameLastName();
+        user.getPassword();
     }
 }
