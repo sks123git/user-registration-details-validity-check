@@ -3,12 +3,26 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistrationValidCheck {
-    public void getFirstNameLastName(){
+    public void getFirstName(){
         UserRegistrationValidCheck user=new UserRegistrationValidCheck();
         UserDetails userDetails=new UserDetails();
         Scanner scanner=new Scanner(System.in);
         System.out.println("Enter the first name");
         userDetails.setFirstName(scanner.nextLine());
+        Pattern pattern=Pattern.compile("([A-Z][a-z]{2,})");
+        Matcher matcherFirstName=pattern.matcher(userDetails.getFirstName());
+        boolean matchFirstName=matcherFirstName.matches();
+        Matcher matcherLastName=pattern.matcher(userDetails.getLastName());
+        boolean matchLastName=matcherLastName.matches();
+        if(!matchFirstName) {
+            System.out.println("Please enter 1st letter in caps and min 3 letters");
+            user.getFirstName();
+        }
+    }
+    public void getLastName(){
+        UserRegistrationValidCheck user=new UserRegistrationValidCheck();
+        UserDetails userDetails=new UserDetails();
+        Scanner scanner=new Scanner(System.in);
         System.out.println("Enter the Last name");
         userDetails.setLastName(scanner.nextLine());
         Pattern pattern=Pattern.compile("([A-Z][a-z]{2,})");
@@ -16,9 +30,9 @@ public class UserRegistrationValidCheck {
         boolean matchFirstName=matcherFirstName.matches();
         Matcher matcherLastName=pattern.matcher(userDetails.getLastName());
         boolean matchLastName=matcherLastName.matches();
-        if(!matchFirstName || !matchLastName) {
+        if(!matchLastName) {
             System.out.println("Please enter 1st letter in caps and min 3 letters");
-            user.getFirstNameLastName();
+            user.getLastName();
         }
     }
     public void getEmailAddress(){
@@ -66,9 +80,10 @@ public class UserRegistrationValidCheck {
 
     public static void main(String[] args) {
         UserRegistrationValidCheck user = new UserRegistrationValidCheck();
-//        user.getFirstNameLastName();
-//        user.getEmailAddress();
-//        user.getMobileNumber();
+        user.getFirstName();
+        user.getLastName();
+        user.getEmailAddress();
+        user.getMobileNumber();
         user.getPassword();
     }
 }
